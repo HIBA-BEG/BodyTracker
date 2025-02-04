@@ -1,50 +1,77 @@
-# Welcome to your Expo app 👋
+# User Profile Management App
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+This is a **React Native** application built with **Expo** for managing user profiles, tracking body metrics, and visualizing progress through photos and timelapse videos.
 
-## Get started
+## Features
 
-1. Install dependencies
+### User Profile Management
+- Create and update user information (Name, Age, Nationality, Weight, Height, Address, etc.).
+- Automatic **BMI (Body Mass Index) Calculation** based on weight and height.
+- Store data using **AsyncStorage**.
 
+### Body Fat Percentage Calculation
+- Input body measurements (waist, neck, hip, etc.).
+- Calculate fat percentage using the **US Navy Method**.
+/* - Weekly progress tracking with **graph visualization**. */
+
+// ### Photo Capture & Organization
+- Use the **camera** to take progress photos.
+- Automatically organize photos by **date and week**.
+- Generate a **timelapse video** from stored photos.
+
+### Image Filtering
+- Apply **filters** (black & white, contrast, brightness) to enhance photos before generating the timelapse.
+
+## Application Screens (Tabs)
+
+1. **Home Screen**
+   - Displays user profile & BMI.
+   - Buttons for quick access to features.
+
+2. **Body Fat Calculation Screen**
+   - Form to input body measurements.
+   - Displays calculated fat percentage & weekly progress chart.
+
+3. **Photo Capture Screen**
+   - Camera interface for taking photos.
+   - Organized gallery for viewing past photos.
+
+4. **Timelapse Generation Screen**
+   - Preview selected photos.
+   - Apply filters and generate a timelapse video.
+
+## Technologies Used
+
+- **React Native with Expo** - Quick setup and simplified development.
+- **React Navigation** - Screen management.
+- **AsyncStorage / SQLite** - Local data persistence.
+- **react-native-camera / expo-camera** - Photo capture.
+- **react-native-chart-kit / react-native-svg** - Graphs for tracking progress.
+- **react-native-image-filter-kit** - Image filters.
+- **react-native-video-processing** - Timelapse video creation.
+
+## Installation & Setup
+
+1. Install dependencies:
    ```bash
    npm install
    ```
-
-2. Start the app
-
+2. Start the app:
    ```bash
-    npx expo start
+   npx expo start
    ```
+3. Open the app using:
+   - Development build
+   - Android emulator
+   - iOS simulator
+   - Expo Go
 
-In the output, you'll find options to open the app in a
+## Learn More
+- [Expo Documentation](https://docs.expo.dev/)
+- [React Native Guide](https://reactnative.dev/)
+- [React Navigation](https://reactnavigation.org/)
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+---
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+This project was created using [Expo](https://expo.dev) and [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
 
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
-```
-
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
