@@ -1,11 +1,59 @@
-import { Image, StyleSheet, Platform } from 'react-native';
+import { Image, StyleSheet, Platform, Button } from 'react-native';
 
 import { HelloWave } from '@/components/HelloWave';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
+import UserProfile from '@/app/(tabs)/profile';
+import { useState } from 'react';
 
-export default function HomeScreen() {
+export default function IndexScreen() {
+  const [buttonColor, setButtonColor] = useState('');
+  const [count, setCount] = useState(0);
+  const [direction, setDirection] = useState('inc');
+
+  const buttonBackground = () => {
+    const randomColor = Math.floor(Math.random()*16777215).toString(16);
+    setButtonColor(`#${randomColor}`);
+    if(direction ==='inc'){
+      setCount(count + 1);
+    }
+    else{
+      setCount(count - 1);
+    }
+    if (count === 4) {
+      setDirection('dec');
+    } else if(count === 1) {
+      setDirection('inc')
+    }
+  }
+  
+  // const buttonBackground = () => {
+  //   const randomColor = Math.floor(Math.random()*16777215).toString(16);
+  //   setButtonColor(`#${randomColor}`);
+  //   if(direction ==='inc'){
+  //     setCount((ov)=> {
+  //       ov++;
+  //       changeDirection(ov)
+  //       return ov;
+  //     });
+  //   }
+  //   else{
+  //     setCount((ov)=> {
+  //       ov--;
+  //       changeDirection(ov)
+  //       return ov;
+  //     });
+  //   }
+
+  // }
+  // const changeDirection = (nbr : number) => {
+  //   if (nbr === 5) {
+  //     setDirection('dec');
+  //   } else if(nbr === 0) {
+  //     setDirection('inc')
+  //   }
+  // }
   return (
     <ParallaxScrollView
       headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
@@ -16,40 +64,16 @@ export default function HomeScreen() {
         />
       }>
       <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
+        <ThemedText type="title">Hey</ThemedText>
+
         <HelloWave />
+        <ThemedText type="title">Counter {count}</ThemedText>
       </ThemedView>
       <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({
-              ios: 'cmd + d',
-              android: 'cmd + m',
-              web: 'F12'
-            })}
-          </ThemedText>{' '}
-          to open developer tools.
-        </ThemedText>
+        <ThemedText type="subtitle"></ThemedText>
+        <Button title="Change Color" onPress={buttonBackground} color={buttonColor} />
       </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-        <ThemedText>
-          Tap the Explore tab to learn more about what's included in this starter app.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          When you're ready, run{' '}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
-      </ThemedView>
+     
     </ParallaxScrollView>
   );
 }
@@ -72,3 +96,4 @@ const styles = StyleSheet.create({
     position: 'absolute',
   },
 });
+
